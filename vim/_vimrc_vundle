@@ -1,0 +1,91 @@
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Vundle Configuration
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+filetype off
+" set the runtime path to include Vundle and initialize
+set rtp+=$VIM/vimfiles/bundle/Vundle.vim
+
+call vundle#begin('$VIM/vimfiles/bundle')
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'vim-syntastic/syntastic'
+Plugin 'tpope/vim-surround'
+Plugin 'scrooloose/nerdtree'
+Plugin 'tpope/vim-fugitive'
+" Plugin 'airblade/vim-gitgutter'
+Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'majutsushi/tagbar'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+" Plugin 'Valloric/YouCompleteMe'
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
+" Plugin 'easymotion/vim-easymotion'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'jiangmiao/auto-pairs'
+" Plugin 'terryma/vim-multiple-cursors'
+Plugin 'mg979/vim-visual-multi'
+Plugin 'junegunn/vim-easy-align'
+Plugin 'vhda/verilog_systemverilog.vim'
+" colorscheme
+Plugin 'tomasr/molokai'
+Plugin 'joshdick/onedark.vim'
+call vundle#end()
+
+filetype plugin indent on
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Plugin Configuration
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" NERD Tree
+nmap <F5> :NERDTreeToggle<cr>
+
+" CtrlP
+let g:ctrlp_working_path_mode = 'ra'
+
+" Syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+let g:syntastic_verilog_compiler_options = '-sv --lint-only --bbox-unsup -Wno-STMTDLY'
+let g:syntastic_verilog_errorformat =
+    \ '%%%trror-%\=%\w%#: %f:%l:%c: %m,' .
+    \ '%%%tarning-%\=%\w%#: %f:%l:%c: %m'
+" let g:syntastic_verilog_remove_include_errors = 1
+
+let g:syntastic_verilog_systemverilog_checkers = ['verilog/verilator']
+
+" Tagbar
+nmap <F8> :TagbarToggle<cr>
+
+" Airline
+let g:airline_powerline_fonts = 1
+let g:airline_detect_modified = 1
+let g:airline_theme = 'onedark'
+
+let g:airline#extensions#tabline#enabled = 1
+
+" EasyAlign
+xmap ga <plug>(EasyAlign)
+nmap ga <plug>(EasyAlign)
+
+" NERD Commenter
+let g:NERDCreateDefaultMappings = 0
+let g:NERDSpaceDelims = 1
+nmap <leader>cc <plug>NERDCommenterToggle
+
+" Verilog_SystemVerilog
+let g:verilog_disable_indent_lst = "module,eos,standalone"
+
+" UltiSnips
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+" let g:UltiSnipsEditSplit="vertical"
+"

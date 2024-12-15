@@ -1,0 +1,5 @@
+let $PATH=$HOME.'/vim91/;'
+let $PATH.=$HOME.'/python/;'
+let $PATH.=$HOME.'/../verilator/;'
+let $PATH.=$HOME.'/../ctags/;'
+let $PATH.=$HOME.'/../git/bin/;'
